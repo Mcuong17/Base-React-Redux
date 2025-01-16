@@ -7,9 +7,12 @@ class MyComponent extends React.Component {
         address: "Ha Noi",
         age:23
       }
-
+      //Merge state chỉ xảy ra ở class component
     handleClick(event) {
         console.log(this.state);
+        this.setState({
+            age:Math.floor( Math.random() * 100+1),
+        })
     }
     handeOnmouseOver(event) {
         console.log('====================================');
@@ -21,8 +24,8 @@ class MyComponent extends React.Component {
     render() {
         return (
             <div>
-                My name is {this.state.name} I from {this.state.address}
-                <button onClick={this.handleClick}>Click Me</button>
+                My name is {this.state.name} I from {this.state.address} im {this.state.age}
+                <button onClick={(event) => {this.handleClick(event)}}>Click Me</button>
                 <button onMouseOver={this.handeOnmouseOver}>Hover Me</button>
             </div>
         );
