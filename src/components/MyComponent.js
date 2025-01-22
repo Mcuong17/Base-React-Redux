@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfor from "./UserInfor";
+import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
@@ -12,15 +12,24 @@ class MyComponent extends React.Component {
         ]
     }
 
+    handleAddNewUser = (objUser) => {
+        this.setState({
+            listUser: [objUser,...this.state.listUser]
+        })
+    }
+
     /* JSX */
     render() {
 
         return (
             <div>
-            <UserInfor />
+            <AddUserInfor
+                handleAddNewUser = {this.handleAddNewUser} /* không có dấu () vì chỉ cần tham chiếu đén hàm chứ ko gọi hàm */
+            />
             <br></br>
             <DisplayInfor 
                 listUser = {this.state.listUser}
+                
             />
             </div>
         );
