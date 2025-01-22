@@ -6,7 +6,7 @@ class DisplayInfor extends React.Component {
         hideUser: true
     }
 
-    handleHideUser = () => {
+    handleShowHideUser = () => {
         this.setState({
             hideUser: !this.state.hideUser
         })
@@ -19,7 +19,7 @@ class DisplayInfor extends React.Component {
         //props => properties
         return (
             <div>
-                <div onClick={(event) => { this.handleHideUser(event) }}>Hide list user</div>
+                <div onClick={(event) => { this.handleShowHideUser(event) }}>{this.state.hideUser ? 'Hide' : 'Show'} list user</div>
                 {this.state.hideUser &&
                     <div>
                         {listUser.map((user) => {
