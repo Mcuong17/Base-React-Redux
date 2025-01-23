@@ -1,4 +1,5 @@
 import React from "react";
+import './DisplayInfor.scss'
 
 class DisplayInfor extends React.Component {
 
@@ -18,7 +19,7 @@ class DisplayInfor extends React.Component {
         //DRY: Dont repeat your seft
         //props => properties
         return (
-            <div>
+            <div className="display-infor-container"> {/* Khai báo class cha để dùng scss ko bị trùng lặp */}
                 <div onClick={(event) => { this.handleShowHideUser(event) }}>{this.state.hideUser ? 'Hide' : 'Show'} list user</div>
                 {this.state.hideUser &&
                     <div>
