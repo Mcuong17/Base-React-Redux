@@ -2,6 +2,7 @@ import React from "react";
 import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
 
+
 class MyComponent extends React.Component {
 
     state = {
@@ -17,18 +18,27 @@ class MyComponent extends React.Component {
             listUser: [objUser,...this.state.listUser]
         })
     }
+    handleDeleteUser = (userId) => {
+        let listUserClone = [...this.state.listUser]
+        listUserClone = listUserClone.filter(item => item.id != userId)
+        this.setState({
+            listUser: listUserClone
+        })
+    }
 
     /* JSX */
     render() {
 
         return (
             <div>
+               
             <AddUserInfor
                 handleAddNewUser = {this.handleAddNewUser} /* không có dấu () vì chỉ cần tham chiếu đén hàm chứ ko gọi hàm */
             />
             <br></br>
             <DisplayInfor 
                 listUser = {this.state.listUser}
+                handleDeleteUser = {this.handleDeleteUser}
                 
             />
             </div>
