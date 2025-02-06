@@ -58,8 +58,8 @@ const DisplayInfor = (props) => {
                 <div>
                     {listUser.map((user) => {
                         return (
-                            <div>
-                                <div key={user.id} className={+user.age > 18 ? 'green' : 'red'}>
+                            <div key={user.id}>
+                                <div  className={+user.age > 18 ? 'green' : 'red'}>
                                     <div>My name {user.name}</div>
                                     <div>My age {user.age}</div><hr />
                                 </div>
