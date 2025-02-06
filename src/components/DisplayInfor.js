@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './DisplayInfor.scss'
 
 //Stateless: ko có state, stateful: có state
@@ -47,6 +47,19 @@ const DisplayInfor = (props) => {
     const handleShowHideListUser = () => {
         setShowHideListUser(!isShowHideListUser)
     }
+
+    console.log(">>> call me render",1)
+    
+    useEffect(() => {
+        // Đã bao gồm hàm ComponentDidMount như bên class. sẽ chạy khi dom đã có dữ liệu
+        console.log(">>> call me Use effect",2) 
+        setTimeout(() => {
+            document.title = 'test'
+        }, 3000);
+        if(listUser.length <= 0) {
+            console.log('You delete all user')
+        }
+    },[listUser])
 
     return (
         <>
