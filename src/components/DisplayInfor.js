@@ -4,8 +4,32 @@ import logo from '../logo.svg'
 
 class DisplayInfor extends React.Component {
 
-    state = {
-        hideUser: true
+    constructor(props) {
+        console.log('>>> call contructor',0)
+        super(props);
+        this.state = {
+            hideUser: true
+        }
+    }
+
+    componentDidMount() {
+        //Hàm này sẽ chạy sau khi mà đã có dữ liệu trong dom
+        console.log('>> call me component did mount', 1)
+        setTimeout(() => {
+            document.title = 'test'
+        }, 3000);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // nếu không truyền đầu vào thì sẽ ko chạy
+        //chạu khi có newState, newProps
+        if(this.props.listUser != prevProps) {
+            console.log('>> call me component did update', this.props, prevProps)
+            if(this.props.listUser.length === 5) {
+                console.log('You have 5 user')
+            }
+        }
+
     }
 
     handleShowHideUser = () => {
@@ -15,6 +39,7 @@ class DisplayInfor extends React.Component {
     }
 
     render() {
+        console.log('>> call me render')
         // distructuring props
         const { listUser } = this.props
         //DRY: Dont repeat your seft
